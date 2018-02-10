@@ -1,0 +1,124 @@
+body {
+	font-family: "Courier New", Courier, monospace;
+	overflow: visible;
+	text-align: center;
+
+}
+
+header{
+	background-color: rgb(54,54,54);
+}
+
+h1{
+	font-size: 5em;
+}
+
+footer {
+	font-size: 0.7em;
+}
+
+.navigation {
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 1.5em;
+	margin: 0; 
+
+	background-color: #f1f1f1;
+
+	-webkit-flex-flow: column wrap;
+	flex-flow: column wrap;
+	padding: 0;
+
+}
+#instructions{
+	padding: 50px;
+	text-align: left;
+}
+
+
+#show-data{
+	padding: 50px;
+	
+}
+
+#examples{
+	padding: 50px;
+	text-align: left;
+}
+
+#ex_details{
+	width: 500px;
+	height: 300px;
+	text-align: left;
+	border: 1px solid black;
+}
+
+button {
+  background: #c0c7cc;
+  background-image: -webkit-linear-gradient(top, #c0c7cc, #dde3e6);
+  background-image: -moz-linear-gradient(top, #c0c7cc, #dde3e6);
+  background-image: -ms-linear-gradient(top, #c0c7cc, #dde3e6);
+  background-image: -o-linear-gradient(top, #c0c7cc, #dde3e6);
+  background-image: linear-gradient(to bottom, #c0c7cc, #dde3e6);
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family:"Courier New", Courier, monospace;
+  color: #141214;
+  padding: 3px 5px 3px 5px;
+  text-align: center;
+
+}
+
+button:hover {
+  background: #ebebeb;
+  background-image: -webkit-linear-gradient(top, #ebebeb, #797d80);
+  background-image: -moz-linear-gradient(top, #ebebeb, #797d80);
+  background-image: -ms-linear-gradient(top, #ebebeb, #797d80);
+  background-image: -o-linear-gradient(top, #ebebeb, #797d80);
+  background-image: linear-gradient(to bottom, #ebebeb, #797d80);
+  text-decoration: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover {
+	color: gray;
+	font-size: 1.5em;
+}
+
+a:link {
+	color: deepskyblue;
+}
+
+/* visited link */
+a:visited {
+	color: deepskyblue;
+}
+
+t1{
+	color:green;
+	font-size: 0.9em;
+}
+
+t2{
+	color:orange;
+	font-size: 1.2em;
+}
+
+t3{
+	color:purple;
+	font-size: 1.5em;
+}
+
+t4{
+	color:gray;
+	font-size: 1.7em;
+}
+
+t5{
+	color:black;
+	font-size: 2em;
+}

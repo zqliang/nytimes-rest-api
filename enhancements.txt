@@ -1,0 +1,20 @@
+Enhancements:
+
+1. Styled front-end. The front-end includes navigation bar, styled links and buttons, etc.
+
+2. Designed own logo for the header with help from sources (mentioned in footer).
+
+3. Error handling
+	-Sends back 404 response and appropriate message to client if request is invalid.
+	-If an item is not found at a specific index or date, the API does not crash the server.
+	-Misc. errors are logged to the console.
+
+4. Extra GET functionality:
+	-/details: if no index is specified, the details of all articles are returned.
+	-/date: returns all article titles for all dates.
+	-/date/YYYY: returns all article titles for specified year.
+	-/date/YYYY-MM: returns all article titles for specified month in year.
+	-/date/YYYY-MM-DD: returns all article titles for specified date.
+
+	The /details and /date requests are useful if the user wishes to view all article details or dates.
+	The specific date requests are useful to search by date.

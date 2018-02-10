@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>API</title>
+		<link href="assets/css/style.css" type="text/css" rel="stylesheet">
+		 <script type="text/javascript" src="assets/scripts/jquery-2.2.4.min.js" defer></script>
+        <script type="text/javascript" src="assets/scripts/script.js" defer></script>
+
+	</head>
+
+	<body align="center">
+		<header>
+		<img src="assets/images/banner.png">
+		</header>
+
+		<nav class="navigation">
+           <a href="#demo">Demo</a> <a href="#instructions">Instructions</a> <a href="#examples">Example</a> 
+          
+      	</nav><!--.navigation-->
+	
+		<section id="demo">
+			<h2>Demo</h2>
+			<p>Click the buttons below to view the API demo!</p>
+			<button id="get-articles">GET Articles</button>
+			<button id="get-authors">GET Authors</button>
+			<button id="get-urls">GET Short URLs</button>
+			<button id="get-tags">GET Tags</button>
+			<button id="get-details">GET Details at Index 2</button>
+			<button id="get-images">GET Thumbnails</button>
+			<button id="get-date">GET 2016-06-21 Articles</button>
+			
+			<section class="wrapper" id="show-data">
+				This section will display the front-end demonstration of the API when a button is clicked.
+			</section>
+
+		</section>	
+
+		<section id="instructions">
+			<h2>Instructions</h2>
+			The following requests are supported:
+			<ul>
+				<li>/articles</li>
+				<li>/authors</li>
+				<li>/urls</li>
+				<li>/tags</li>
+				<li>/details</li>
+				<li>/details/YOUR_INDEX_HERE</li>
+				<li>/images</li>
+				<li>/date</li>
+				<li>/date/YYYY</li>
+				<li>/date/YYYY-MM</li>
+				<li>/date/YYYY-MM-DD</li>
+
+			</ul>
+			<br>
+			Add these requests to the URL (e.g., http://127.0.0.1:8080/articles) to view the JSON returned by the API.
+			Replace YOUR_INDEX_HERE with a numerical index (e.g. http://127.0.0.1:8080/details/0) to get details of an article at that index
+			and replace the date format with a date in the specified format, (e.g. http://127.0.0.1:8080/date/2016-06-22) to get the article at that date.
+
+			<h3>
+			/articles</h3>
+			Each article contains published_date, title, abstract, short_url in unprocessed format.
+			<p>Returns a JSON string in the following format:
+			<br>[{"published_date":"2016-06-22T00:00:00-04:00","title":"Goodbye, ...","abstract":"...","short_url":"http://.."}]</p>
+			
+			</p>
+
+			<h3>
+			/authors</h3>
+			Each article contains byline with authors in capital case; multiple authors are separated by 'and'.
+			<p>Returns a JSON string in the following format:
+			<br>[{"byline":"John Smith and Jane Doe"}]
+			
+			</p>
+
+			<h3>
+			/urls</h3>
+			Each article contains an array of short urls as values to unique published_date keys. The published_date is converted to JavaScript date format
+			and sorted in order starting with the latest date.
+			<p>Returns a JSON string in the following format:
+			<br>[{ "published_date": "Sun Jun 26 2016 00:00:00 GMT-0400 (Eastern Daylight Time)", "short_url":[url1, url2,...] }]</p>
+
+			<h3>
+			/tags</h3>
+			Returns an array of tags as the des_facet field in the article.
+			<p>Returns a JSON string in the following format:
+			<br>[{ "des_facet": [tag1, tag2,...] }]</p>
+
+			<h3>
+			/details</h3>
+			View all articles' section, subsection, title, abstract,
+			byline, published_date, and des_facet. The des_facet field has an array of tags.
+			<p>Returns a JSON string in the following format:
+			<br>[{ "section": , "subsection": , "title": , "abstract": , "byline": , "published_date": , "des_facet": [tag1, tag2,...] }]</p>
+
+			<h3>
+			/details/YOUR_INDEX_HERE</h3>
+			Replace YOUR_INDEX_HERE with an article's numerical index to view its section, subsection, title, abstract,
+			byline, published_date, and des_facet. The des_facet field has an array of tags. If no article is found at the specified index,
+			an empty array is returned.
+			<p>Returns a JSON string in the following format:
+			<br>[{ "section": , "subsection": , "title": , "abstract": , "byline": , "published_date": , "des_facet": [tag1, tag2,...] }]</p>
+
+
+			<h3>
+			/images</h3>
+			Gets an article's title, url, img_url, and caption. img_url is set to have a Standard Thumbnail format as first preference. If the first
+			format preference is not found, img_url would be set to have a thumbLarge format. If no thumbLarge format is found, img_url would
+			be set to have a Normal format, etc. Keep going until the last preference which is superJumbo.  
+			If no img_url or no caption is found, the img_url and caption fields would be an empty string "". 
+			<p>Returns a JSON string in the following format:
+			<br>[{ "title": , "url": , "img_url": , "caption": }]
+			
+			</p>
+
+			<h3>
+			/date</h3>
+			Returns the unformatted published_date associated with the title.
+			<p>Returns a JSON string in the following format:
+			<br>[{ "published_date": , "title": , }]</p>
+
+			<h3>
+			/date/YYYY</h3>
+			Replace YYYY with a year to get the article title associated with the unformatted published_date in that year.
+			If no article is associated with that year, an empty array is returned.
+
+			<p>Returns a JSON string in the following format:
+			<br>[{ "published_date": , "title": , }]</p>
+
+			<h3>
+			/date/YYYY-MM</h3>
+			Replace YYYY-MM with year and month in the specified format to get the article title associated with the unformatted published_date in that year's month.
+			If no article is associated with that month, an empty array is returned.
+
+			<p>Returns a JSON string in the following format:
+			<br>[{ "published_date": , "title": , }]</p>
+
+			<h3>
+			/date/YYYY-MM-DD</h3>
+			Replace YYYY-MM-DD with a date in the specified format to get the article title associated with the unformatted published_date.
+			If no article is associated with that date, an empty array is returned.
+
+			<p>Returns a JSON string in the following format:
+			<br>[{ "published_date": , "title": , }]</p>
+
+		</section>
+
+		<section id="examples">
+			<h2>Example</h2>
+			To make an ajax request for getting the details of an article of a specific index, specify the 
+			url as /details/your_index_here. In this example the index is 0. Set the type as GET and dataType as json. Add your parsing code
+			to the success callback function.
+			<pre id="ex_details">
+	$.ajax({ 
+	    type: 'GET', 
+	    url: '/details/0', 
+	    dataType: 'json', 
+	    success: function (data) { 
+
+
+	    	var json = JSON.stringify(data);
+			var json_parsed = JSON.parse(json);
+
+			//your code here
+			
+	    	
+	    },
+	    error: function (jqXHR, textStatus){
+	    	alert(textStatus + ' ');
+	    }
+	});
+			</pre>
+		</section>
+
+		<footer>Created by Zhuoqun Liang <br>
+			Logo help from http://www.userlogos.org/files/logos/bcm2009/nytimes.png
+			<br> and https://daks2k3a4ib2z.cloudfront.net/56e9debe633486e33019844e/56edbaee77b06a341608c1fa_the-new-york-times.png
+		</footer>
+
+	</body>
+
+	
+</html>
